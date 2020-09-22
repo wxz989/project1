@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="../dist/css/login.min.css">
+    <script src="../dist/js/jquery-1.12.4.min.min.js"></script>
+    <script src="../dist/js/jquery.cookie.min.js"></script>
+    <script src="../dist/js/public.min.js"></script>
+</head>
+
+<body>
+    <!-- 遮罩 -->
+    <div class="mark"></div>
+    <!-- 登录 -->
+    <div class="login">
+        <form action="">
+            <button id="close">关闭</button>
+            <div class="form">
+                <span class="login-error"></span>
+                <p>登录名</p>
+                <input type="text" name="uname" id="uname" placeholder="会员名/邮箱/手机号">
+                <p>
+                    <span>登录密码</span>
+                    <span><a href="#">忘记登录密码？</a></span>
+                </p>
+                <input type="password" name="upwd" id="upwd" placeholder="请输入登录密码"><br>
+                <input type="button" value="登录" class="login-btn" name="login">
+                <p><a href="#" id="register">免费注册</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let $login_error = $('.login-error');
+        let $login_div = $('.login');
+        $('.login-btn').click(function () {
+            let uname = $('#uname').val();
+            let upwd = $('#upwd').val();
+
+            let cookie_str = $.cookie('users') ? $.cookie('users') : '';
+            let cookie_obj = $toObj(cookie_str);
+
+            // if(uname === ''){
+            //     $login_error.css('display', 'block');
+            //     $login_error.html('请输入用户名');
+            // }
+
+            if (uname in cookie_obj) {
+                if (upwd === cookie_obj[uname]) {
+                    alert('登录成功');
+                    location.href = '../dist/login.html';
+                } else {
+                    $login_error.css('display', 'block');
+                    $login_error.html('登录名或登录密码不正确');
+                }
+            }else {
+                $login_error.css('display', 'block');
+                $login_error.html('不存在此用户');
+            }   
+
+        })
+
+        $('#register').click(function () {
+            location.href = './register.html';
+        })
+        $('#close').click(function(){
+            $login_div.css('display', 'none');
+        })
+    </script>
+</body>
+
+</html>

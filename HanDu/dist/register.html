@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="./css/register.min.css">
+    <script src="./js/jquery-1.12.4.min.min.js"></script>
+    <script src="./js/jquery.cookie.min.js"></script>
+    <script src="./js/public.min.js"></script>
+</head>
+
+<body>
+    <div class="change"></div>
+    <div class="register">
+        <form action="">
+            <p>
+                <span>手机号</span>
+                <select name="" class="drop-list">
+                    <option value="" selected>中国大陆&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+86</option>
+                    <option value="">中国台湾&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+86</option>
+                    <option value="">中国香港&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+886</option>
+                    <option value="">马来西亚&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+60</option>
+                    <option value="">新加坡&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+65</option>
+                </select>
+                <input type="text" id="phone-num" name="uname" placeholder="请输入你的手机号码">
+                <i class="uname-error"></i>
+            </p>
+            <p>
+                <span>密码</span>
+                <input type="password" name="upwd" id="upwd" placeholder="请设置密码">
+                <i class="upwd-error"></i>
+            </p>
+
+            <p>
+                <input type="button" value="注册" class="reg-btn">
+                <input type="button" value="去登录" class="log-btn">
+            </p>
+
+
+            <script>
+                $('.reg-btn').click(function () {
+                    let uname = $('#phone-num').val();
+                    let upwd = $('#upwd').val();
+                    let uname_error = $('.uname-error');
+                    let upwd_error = $('.upwd-error');
+
+                    // 手机号码
+                    let re_user = /^1[3456789]\d{9}$/;
+                    if (!re_user.test(uname)) {
+                        uname_error.html('手机号码格式不正确，请重新输入');
+                        uname_error.css('color', 'red');
+                        return;
+                    } else {
+                        uname_error.html('输入正确');
+                        uname_error.css('color', 'green');
+                    }
+
+                    //密码 字母数字下划线 6-12
+                    let re_pass = /^\w{6,12}$/;
+                    if (!re_pass.test(upwd)) {
+                        upwd_error.html('密码不正确，请重新输入');
+                        upwd_error.css('color', 'red');
+                        return;
+                    }else{
+                        upwd_error.html('输入正确');
+                        upwd_error.css('color', 'green');
+                    }
+
+
+                    //获取cookie
+                    let cookie_str = $.cookie('users') ? $.cookie('users') : '';
+                    //转对象
+                    let cookie_obj = $toObj(cookie_str);
+                    //判断用户是否存在
+                    if (uname in cookie_obj) {
+                        upwd_error.css('display', 'none');
+                        upwd_error.css('display', 'none');
+                        alert('用户已存在');
+                        
+                        return;
+                    }
+                    //不存在，加入对象
+                    cookie_obj[uname] = upwd;
+                    //存入cookie
+                    $.cookie('users', JSON.stringify(cookie_obj), { expires: 7, path: '/' });
+                    alert('注册成功');
+                })
+                $('.log-btn').click(function () {
+                    location.href = './login.html';
+                })
+            </script>
+        </form>
+    </div>
+</body>
+
+</html>

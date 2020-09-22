@@ -1,0 +1,177 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl,
+dd,
+hr,
+td,
+input,
+option,
+textarea {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "微软雅黑";
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    border: none;
+}
+
+// header 
+.header {
+    width: 100%;
+    height: 100px;
+    background: #ffffff;
+    .header_item {
+        width: 1564px;
+        height: 100%;
+        margin: 0 auto;
+        .logo {
+            float: left;
+            height: 100px;
+            margin-left: 50px;
+            img {
+                height: 100px;
+            }
+        }
+        .nav {
+            float: right;
+            height: 100px;
+            line-height: 100px;
+            .menu>li {
+                float: left;
+                position: relative;
+                padding: 0 35px;
+                .downMenu {
+                    position: absolute;
+                    top: 85px;
+                    left: -10%;
+                    padding: 10px 0;
+                    background: #ffffff;
+                    box-shadow: 0 15px 27px 0 rgba(167, 165, 165, 0.38);
+                    display: none;
+                    li {
+                        width: 151px;
+                        height: 40px;
+                        text-align: center;
+                        line-height: 40px;
+                        margin-bottom: 2px;
+                        transition: all .5s;
+                    }
+                    li:hover {
+                        background: #fbe5e5;
+                    }
+                }
+            }
+            .menu a {
+                color: #1e1813;
+                font-size: 16px;
+            }
+            .menu span {
+                text-align: center;
+                font-size: 16px;
+                color: #19110B;
+                margin: 0 5px;
+            }
+            .menu>li:hover .redFont {
+                color: #FC0000;
+            }
+            .menu>li:hover .downMenu {
+                display: block;
+                z-index: 999;
+            }
+        }
+    }
+}
+
+// 底部
+.footer {
+    width: 100%;
+    height: 239px;
+    background: #efefef;
+    .footer_item {
+        width: 1706px;
+        padding-top: 53px;
+        margin: 0 auto;
+        font-size: 16px;
+        .footer_left {
+            width: 210px;
+            height: 90px;
+            line-height: 45px;
+            color: #696969;
+            float: left;
+            a {
+                color: #696969;
+            }
+        }
+        .footer_right {
+            width: 710px;
+            height: 90px;
+            float: right;
+            p:first-of-type {
+                height: 45px;
+                .conOur {
+                    color: #666666;
+                    margin-left: 485px;
+                    float: left;
+                }
+                .weibo {
+                    width: 32px;
+                    height: 32px;
+                    color: #707070;
+                    margin: 0 38px 0 28px;
+                }
+                .wechat {
+                    display: inline-block;
+                    width: 32px;
+                    height: 32px;
+                    background: url(../../dist/images/wechat.png)center;
+                    background-size: 32px;
+                    position: relative;
+                    img {
+                        position: absolute;
+                        top: 15px;
+                        left: -70px;
+                        width: 150px;
+                        padding: 18px;
+                        display: none;
+                        z-index: 99;
+                    }
+                }
+                .wechat:hover .erweima {
+                    display: block;
+                }
+            }
+            p:last-of-type {
+                height: 45px;
+                line-height: 45px;
+                color: #808080;
+                a {
+                    margin: 0 10px 0 40px;
+                    color: #808080;
+                }
+                span:nth-of-type(2) {
+                    margin: 0 10px 0 42px;
+                }
+            }
+        }
+    }
+}

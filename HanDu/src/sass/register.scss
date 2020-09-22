@@ -1,0 +1,59 @@
+@import "public";
+.change{
+    width: 1490px;
+    height: 5px;
+    background: #E6E6E6;
+    margin:0 auto;
+    margin-top: 100px;
+}
+.register{
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    form{
+        margin-top: 70px;
+        font-size: 16px;
+        span{
+            float: left;
+            width: 80px;
+            height: 47px;
+            line-height: 47px;
+            text-align: right;
+            margin-right: 15px;
+        }
+        select{
+            width:130px ;
+            height: 47px;
+            float: left;
+            box-sizing: content-box;
+            border-right: 0;
+        } 
+        input{
+            outline: none;
+        }
+        #phone-num,#upwd{
+            width: 200px;
+            height: 45px;
+            float: left;
+        }
+        p:nth-of-type(2){
+                margin-top:66px;
+                height: 47px;
+            }
+        p:nth-of-type(3){
+            width: 400px;
+            text-align: center;
+            margin-top: 15px;
+            input{
+                width: 60px;
+                height: 30px;
+            }
+        }
+        p i{
+            float:left;
+            width: 250px;
+            height: 47px;
+            line-height: 47px;
+        }
+    }
+}
